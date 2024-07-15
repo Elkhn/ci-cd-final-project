@@ -1,17 +1,17 @@
-name: {name of workflow}
+name: CI workflow
 on:
   push:
-    branches: {array of branches}
+    branches: main
   pull_request:
-    branches: {array of branches}
+    branches: main
 jobs:
   build:
-    runs-on: {placeholder}
-    container: {placeholder}
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
     steps:
-      - name: {placeholder}
-        uses: {placeholder}
-      - name: {placeholder}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
         run: |
-        {first command}
-        {second command}
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
